@@ -1,5 +1,4 @@
-import { AuthOptions } from "next-auth";
-import NextAuth from "next-auth/next";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from 'next-auth/providers/google'
 
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
@@ -16,7 +15,7 @@ declare module 'next-auth' {
     }
 }
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
     adapter: MongoDBAdapter(clientPromise() as Promise<MongoClient>) as Adapter,
     pages: {
         signIn: '/auth/sign-in'
